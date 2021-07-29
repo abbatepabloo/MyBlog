@@ -1,33 +1,4 @@
 @page "/"
-@using System.IO
-@using myblog.Classes
-@using myblog.Components
-@inject HttpClient Http
+@using MyBlog.Components
 
-@if (info != null)
-{
-    <img src="@info.avatar_url" class="avatar" />
-    <h2>Hi I'm <strong>@info.name</strong></h2>
-    <h5>@info.bio</h5>
-
-    <h2>Last entries</h2>
-    <hr />
-    <ul>
-        @foreach (var entry in content)
-        {
-            <EntryComponent Entry=entry></EntryComponent>
-        }
-    </ul>
-}
-
-@code
-{
-    GitHubUserInfo info;
-    List<GitHubContentInfo> content;
-    protected async override Task OnInitializedAsync()
-    {
-        info = await Http.GetFromJsonAsync<GitHubUserInfo>("https://api.github.com/users/abbatepabloo");
-        content = await Http.GetFromJsonAsync<List<GitHubContentInfo>>("https://api.github.com/repos/abbatepabloo/myblog/contents");
-    }
-
-}
+<EntriesComponent></EntriesComponent>

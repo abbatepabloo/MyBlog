@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace myblog.Classes
+namespace MyBlog.Classes
 {
     public class GitHubContentInfo
     {
