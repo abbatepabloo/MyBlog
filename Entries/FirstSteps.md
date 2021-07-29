@@ -1,3 +1,10 @@
 ## These are my first steps into my blog.
 
-Please enjoy the content. :heartpulse:
+```csharp
+namespace X
+{
+  public class Y
+  {
+  }
+}
+```
