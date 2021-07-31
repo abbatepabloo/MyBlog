@@ -19,6 +19,8 @@ jobs:
         - name: Replace Href base address
           run: sed -i 's/href=\"\/\"/href=\"\/MyBlog\/\"/' MyBlog/wwwroot/index.html
 
+        - run: cat MyBlog/wwwroot/index.html
+
         # Run tests
         - name: Test
           run: dotnet test
