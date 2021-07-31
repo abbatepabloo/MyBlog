@@ -28,7 +28,7 @@ namespace MyBlog
 
         private void RedirectToEntries()
         {
-            NavigationManagerService.NavigateTo("/entries");
+            NavigationManagerService.NavigateTo("entries");
         }
     }
 }

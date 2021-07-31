@@ -12,7 +12,7 @@ namespace MyBlog.Components
         [Inject] NavigationManager NavigationManagerService { get; set; }
         protected override void OnInitialized()
         {
-            NavigationManagerService.NavigateTo("/entries");
+            NavigationManagerService.NavigateTo("entries");
         }
     }
 }
