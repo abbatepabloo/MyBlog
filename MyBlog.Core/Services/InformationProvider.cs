@@ -81,7 +81,7 @@ namespace MyBlog.Core
 
         protected virtual async Task<GitHubSearchResult?> SearchAsync(string queryWithClauses, string? extraParams = null)
         {
-            var url = $"{GitHubApiRoot}/search/code?q={queryWithClauses} user:{owner} repo:{owner}/{blogName} path:Entries";
+            var url = $"{GitHubApiRoot}/search/code?q={queryWithClauses} user:{owner} repo:{owner}/{blogName} path:/MyBlog/Entries";
             if (!string.IsNullOrEmpty(extraParams)) url += $"&{extraParams}";
             return await httpClient.GetFromJsonAsync<GitHubSearchResult>(url);
         }
