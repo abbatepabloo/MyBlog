@@ -17,10 +17,7 @@ jobs:
 
         # Replace base href
         - name: Replace Href base address
-          uses: actions/github-script@v4
-          id: set-result
-          with:
-            script: (Get-Content MyBlog/wwwroot/index.html).replace('href="/"', 'href="/MyBlog/"')|Set-Content MyBlog/wwwroot/index.html
+          run: sed -i 's/href="/"/href="/MyBlog"/' MyBlog/wwwroot/index.html
 
         # Run tests
         - name: Test
