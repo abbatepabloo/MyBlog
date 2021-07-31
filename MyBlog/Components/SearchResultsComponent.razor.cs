@@ -49,7 +49,7 @@ namespace MyBlog.Components
         protected void GotoEntry(string gitUrl, string path)
         {
             SearchKeyword = null;
-            NavigationManagerService.NavigateTo($"/Entry/{HttpUtility.UrlEncode(gitUrl)}/{HttpUtility.UrlEncode(path)}");
+            NavigationManagerService.NavigateTo($"entry/{HttpUtility.UrlEncode(gitUrl)}/{HttpUtility.UrlEncode(path)}");
         }
 
     }
