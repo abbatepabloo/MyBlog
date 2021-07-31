@@ -19,6 +19,10 @@ jobs:
         - name: Replace Href base address
           run: sed -i 's/href=\"\/\"/href=\"\/MyBlog\/\"/' MyBlog/wwwroot/index.html
 
+        # Duplicate index into 404.html
+        - name: copy index.html to 404.html
+          run: cp MyBlog/wwwroot/index.html MyBlog/wwwroot/404.html
+
         # Run tests
         - name: Test
           run: dotnet test
