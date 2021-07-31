@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>MyBlog</title>
-    <base href="/" />
+    <base href="/MyBlog/" />
 
     <link href="css/app.css" rel="stylesheet" />
     <link href="MyBlog.styles.css" rel="stylesheet" />
@@ -35,6 +35,7 @@
 
     <script src="_content/Blazorise/blazorise.js"></script>
     <script src="_content/Blazorise.Bootstrap/blazorise.bootstrap.js"></script>
+
 </body>
 
 </html>

@@ -1,20 +1,19 @@
 ﻿using Microsoft.AspNetCore.Components;
-using MyBlog.Classes;
-using System;
+using MyBlog.Core;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MyBlog.Components
 {
     public partial class EntriesComponent : ComponentBase
     {
-        [Inject] public IInformationProvider InformationService { get; set; }
-        public List<GitHubContentInfo> Entries { get; set; }
+        [Inject] protected IInformationProvider InformationService { get; set; }
+        public List<GitHubSearchResult.Item> Entries { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
-            Entries = await InformationService.GetContentInfoAsync();
+            var result = await InformationService.GetLastEntriesAsync();
+            Entries = result.items;
         }
     }
 }

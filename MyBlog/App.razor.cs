@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
-using MyBlog.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using MyBlog.Core;
 using System.Threading.Tasks;
 
 namespace MyBlog
