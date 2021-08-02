@@ -15,31 +15,24 @@ namespace MyBlog.Core
     public class InformationProvider : IInformationProvider
     {
         public const string GitHubApiRoot = "https://api.github.com";
-        private readonly HttpClient httpClient;
-        private readonly IConfiguration configuration;
-        private readonly string owner;
-        private readonly string blogName;
+        public const string Owner = "abbatepabloo";
+        public const string BlogName = "myblog";
 
-        public InformationProvider(HttpClient httpClient, IConfiguration configuration)
+        private readonly HttpClient httpClient;
+
+        public InformationProvider(HttpClient httpClient)
         {
             this.httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-            this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-
-            owner = configuration.GetValue<string>("github:owner");
-            if (string.IsNullOrEmpty(owner)) throw new InvalidOperationException("owner name is missing");
-
-            blogName = configuration.GetValue<string>("github:blogName");
-            if (string.IsNullOrEmpty(blogName)) throw new InvalidOperationException("blog name is missing");
         }
 
         public async Task<GitHubUserInfo?> GetUserInfoAsync()
         {
-            return await httpClient.GetFromJsonAsync<GitHubUserInfo>($"{GitHubApiRoot}/users/{owner}");
+            return await httpClient.GetFromJsonAsync<GitHubUserInfo>($"{GitHubApiRoot}/users/{Owner}");
         }
 
         public async Task<GitHubCommitInfo?> GetCommitInfoAsync(string path)
         {
-            var url = $"{GitHubApiRoot}/repos/{owner}/{blogName}/commits?page=1&per_page=1&path={path}";
+            var url = $"{GitHubApiRoot}/repos/{Owner}/{BlogName}/commits?page=1&per_page=1&path={path}";
             var commit = await httpClient.GetFromJsonAsync<IEnumerable<GitHubCommitInfo>>(url);
             return commit?.FirstOrDefault();
         }
@@ -81,7 +74,7 @@ namespace MyBlog.Core
 
         protected virtual async Task<GitHubSearchResult?> SearchAsync(string queryWithClauses, string? extraParams = null)
         {
-            var url = $"{GitHubApiRoot}/search/code?q={queryWithClauses} user:{owner} repo:{owner}/{blogName} path:/MyBlog/Entries";
+            var url = $"{GitHubApiRoot}/search/code?q={queryWithClauses} user:{Owner} repo:{Owner}/{BlogName} path:/MyBlog/Entries";
             if (!string.IsNullOrEmpty(extraParams)) url += $"&{extraParams}";
             return await httpClient.GetFromJsonAsync<GitHubSearchResult>(url);
         }
